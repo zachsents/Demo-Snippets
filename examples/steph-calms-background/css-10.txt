@@ -1,0 +1,4 @@
+height: 60%;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #623AFE, #EAB2C5);
+    

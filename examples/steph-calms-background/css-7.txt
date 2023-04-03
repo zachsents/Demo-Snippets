@@ -1,0 +1,3 @@
+# move to .headshot
+transform: translateY(50px);
+    transition: transform 0.5s;

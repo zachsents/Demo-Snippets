@@ -1,0 +1,5 @@
+width: 600px;
+    aspect-ratio: 1.6;
+    position: relative;
+    overflow: hidden;
+    

@@ -1,0 +1,3 @@
+# inside .headshot
+width: 75%;
+    

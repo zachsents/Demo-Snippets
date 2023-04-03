@@ -1,0 +1,47 @@
+.wrapper {
+    width: 600px;
+    aspect-ratio: 1.6;
+
+    background: radial-gradient(#623AFE, #EAB2C5);
+    background-position: bottom right;
+    background-size: 220% 220%;
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.headshot {
+    width: 75%;
+    transform: translateY(50px);
+    transition: transform 0.5s;
+}
+
+.overlay {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+
+    background: linear-gradient(135deg, #623AFE, #EAB2C5);
+    height: 60%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    filter: blur(20px);
+    opacity: 0.5;
+
+    transform: translate(20px, 30px);
+    transition: transform 0.5s;
+}
+
+.wrapper:hover .headshot {
+    transform: translate(-40px, 10px) scale(1.05);
+}
+
+.wrapper:hover .overlay {
+    transform: translate(100px, 10px);
+}

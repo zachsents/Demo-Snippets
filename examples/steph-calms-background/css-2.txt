@@ -1,0 +1,5 @@
+# inside .wrapper
+background: radial-gradient(#623AFE, #EAB2C5);
+    background-position: bottom right;
+    background-size: 220% 220%;
+    
