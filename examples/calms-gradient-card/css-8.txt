@@ -1,0 +1,5 @@
+#bold,white Let's make the headshot move and scale a bit on hover
+#bold,yellow move underneath .headshot
+.wrapper:hover .headshot {
+    transform: translate(-40px, 10px) scale(1.05);
+}

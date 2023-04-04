@@ -1,0 +1,3 @@
+#bold,white We'll move it over a bit and give it the same transition as the headshot
+transform: translate(20px, 30px);
+    transition: transform 0.5s;

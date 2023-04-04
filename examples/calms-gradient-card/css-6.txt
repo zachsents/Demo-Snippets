@@ -1,0 +1,6 @@
+#bold,white And then position it with a flex box
+#bold,yellow inside .wrapper
+display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    

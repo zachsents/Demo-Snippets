@@ -3,6 +3,8 @@ import fs from "fs/promises"
 import chalk from "chalk"
 import path from "path"
 
+const COMMENT_REGEX = /^#([\w,]+)?/
+const DEFAULT_COMMENT_FUNCTIONS = ["white"]
 
 export class Step {
 
@@ -16,6 +18,11 @@ export class Step {
     constructor(fileContent, label = "?") {
         const lines = fileContent.split("\n")
         this.comments = lines.filter(line => line.startsWith("#"))
+            .map(line => {
+                const chalkFunctions = line.match(COMMENT_REGEX)?.[1]?.split(",") ?? DEFAULT_COMMENT_FUNCTIONS
+                const totalFunction = chalkFunctions.reduce((a, b) => a[b], chalk)
+                return totalFunction(line.replace(COMMENT_REGEX, "").trim())
+            })
         this.content = lines.filter(line => !line.startsWith("#")).join("\n")
         this.label = label
     }
@@ -25,7 +32,11 @@ export class Step {
     }
 
     printComments() {
-        this.comments.forEach(comment => console.log(chalk.bold.yellow(comment.replace(/^#/, ""))))
+        this.comments.forEach(comment => console.log(comment))
+    }
+
+    printCompleted() {
+        console.log(chalk.green.bold("✔"))
     }
 
     async write() {

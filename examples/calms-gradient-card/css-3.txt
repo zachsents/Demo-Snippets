@@ -1,3 +1,4 @@
+#bold,white Setting the width, aspect ratio, position and overflow
 width: 600px;
     aspect-ratio: 1.6;
     position: relative;

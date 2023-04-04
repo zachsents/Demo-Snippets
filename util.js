@@ -53,9 +53,10 @@ export function startSequence({ prefix, dir = "./", suffix = ".txt", title = "Ne
 
         // when the shortcut is pressed...
         let stopListening
-        stopListening = registerShortcutListener(() => {
+        stopListening = registerShortcutListener(async () => {
             // write out content for current step
-            steps[stepIndex].write()
+            await steps[stepIndex].write()
+            steps[stepIndex].printCompleted()
 
             // increment step index
             stepIndex++

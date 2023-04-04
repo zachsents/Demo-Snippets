@@ -1,0 +1,3 @@
+#bold,white then make it translucent.
+opacity: 0.5;
+    

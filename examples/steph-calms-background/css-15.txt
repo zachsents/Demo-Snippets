@@ -1,4 +1,0 @@
-# move underneath .overlay
-.wrapper:hover .overlay {
-    transform: translate(100px, 10px);
-}

@@ -1,0 +1,6 @@
+#bold,white Now we'll give it a size and background so we can see it
+#blue disable wrapper background so we can see better
+height: 60%;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #623AFE, #EAB2C5);
+    

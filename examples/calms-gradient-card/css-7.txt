@@ -1,0 +1,4 @@
+#bold,white Now we can move the headshot down a bit and give it a transition
+#bold,yellow inside .headshot
+transform: translateY(50px);
+    transition: transform 0.5s;

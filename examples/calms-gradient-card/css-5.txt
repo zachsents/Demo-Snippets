@@ -1,0 +1,4 @@
+#bold,white Now we'll set the size of our headshot
+#bold,yellow inside .headshot
+width: 75%;
+    

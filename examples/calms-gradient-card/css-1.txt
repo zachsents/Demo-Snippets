@@ -1,3 +1,4 @@
+#bold,white Now we'll set up our CSS classes
 .wrapper {
     
 }
