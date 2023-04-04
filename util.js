@@ -22,28 +22,52 @@ export async function writeSection(text) {
     await keyboard.type(Key.LeftControl, Key.V)
 }
 
-export function startSequence({ prefix, dir = "./", suffix = ".txt", title = "New Sequence" } = {}) {
+/**
+ * Starts a sequence of steps.
+ *
+ * @export
+ * @param {object} [options]
+ * @param {string | RegExp | (fileName: string) => boolean} [options.filter] Filter files in the directory. Can be a string, Regex, or a function.
+ * @return {*}
+ */
+export function startSequence({
+    filter,
+    dir = "./",
+    title = "New Sequence",
+} = {}) {
     console.log("\n=======")
     console.log(chalk.bold.blue(title))
     console.log("=======\n")
-    
-    return new Promise(async resolve => {
 
-        // find files with prefix
-        const filePaths = (await fs.readdir(dir))
-            .filter(
-                fileName =>
-                    fileName.startsWith(prefix) && fileName.endsWith(suffix)
-            )
-            .map(fileName => path.join(dir, fileName))
+    return new Promise(async resolve => {
+        // find all files in directory
+        let fileNames = await fs.readdir(dir)
+
+        // apply filter
+        if (filter) {
+            if (typeof filter === "function")
+                fileNames = fileNames.filter(filter)
+            else if (typeof filter === "string")
+                fileNames = fileNames.filter(fileName =>
+                    fileName.includes(filter)
+                )
+            else if (filter instanceof RegExp)
+                fileNames = fileNames.filter(fileName => filter.test(fileName))
+        }
 
         // load steps
-        const steps = await Promise.all(filePaths.map(Step.loadFromFile))
+        const steps = await Promise.all(
+            fileNames.map(fileName =>
+                Step.loadFromFile(path.join(dir, fileName))
+            )
+        )
 
         // sort steps in order of their label
-        steps.sort((a, b) => a.label.localeCompare(b.label, undefined, {
-            numeric: true,
-        }))
+        steps.sort((a, b) =>
+            a.label.localeCompare(b.label, undefined, {
+                numeric: true,
+            })
+        )
 
         let stepIndex = 0
 

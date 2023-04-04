@@ -11,7 +11,7 @@ export class Step {
     static async loadFromFile(filePath) {
         return new Step(
             await fs.readFile(filePath, "utf-8"),
-            path.basename(filePath).match(/\d+\w?/)?.[0]
+            path.basename(filePath).replace(path.extname(filePath), "")
         )
     }
 
