@@ -1,9 +1,13 @@
-#bold,white That's pretty good, now let's do the overlay
-#bold,white We'll position it absolutely, give it a z-index so it's on top
-#bold,white and stick it in the bottom left
-#bold,yellow inside .overlay
+[# bold,white] That's pretty good, now let's do the overlay
+[# bold,white] We'll position it absolutely, give it a z-index so it's on top
+[# bold,white] and stick it in the bottom left
+[start-cmd] :32
+
+---
 position: absolute;
     z-index: 1;
     left: 0;
     bottom: 0;
     
+    
+---

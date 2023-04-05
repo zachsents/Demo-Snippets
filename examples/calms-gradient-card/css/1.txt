@@ -1,4 +1,6 @@
-#bold,white Now we'll set up our CSS classes
+[# bold,white] Now we'll set up our CSS classes
+
+---
 .wrapper {
     
 }
@@ -10,3 +12,4 @@
 .overlay {
     
 }
+---

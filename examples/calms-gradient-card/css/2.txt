@@ -1,6 +1,10 @@
-#white,bold We'll start by adding a background to our wrapper div
-#bold,yellow inside .wrapper
+[# white,bold] We'll start by adding a background to our wrapper div
+[start-cmd] :2
+
+---
 background: radial-gradient(#623AFE, #EAB2C5);
     background-position: bottom right;
     background-size: 220% 220%;
     
+    
+---

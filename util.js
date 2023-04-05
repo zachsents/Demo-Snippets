@@ -22,6 +22,26 @@ export async function writeSection(text) {
     await keyboard.type(Key.LeftControl, Key.V)
 }
 
+export async function executeCommand(command) {
+    console.log(chalk.gray(`executing command: ${command}`))
+
+    // treat line commands specially -- we do this to prevent the command palette from getting too big
+    if(command.startsWith(":")) {
+        // jump to line
+        await keyboard.type(Key.LeftControl, Key.G)
+        await keyboard.type(command.substring(1))
+        await keyboard.type(Key.Enter)
+        
+        // we jumped to a line, so we need to go to the end of the line
+        await keyboard.type(Key.End)
+        return
+    }
+
+    await keyboard.type(Key.LeftControl, Key.P)
+    await keyboard.type(command)
+    await keyboard.type(Key.Enter)
+}
+
 /**
  * Starts a sequence of steps.
  *
@@ -71,16 +91,14 @@ export function startSequence({
 
         let stepIndex = 0
 
-        // log first step's header & comments
-        steps[0]?.printStepHeader()
-        steps[0]?.printComments()
+        // start first step
+        await steps[0]?.start()
 
         // when the shortcut is pressed...
         let stopListening
         stopListening = registerShortcutListener(async () => {
-            // write out content for current step
-            await steps[stepIndex].write()
-            steps[stepIndex].printCompleted()
+            // finish current step
+            await steps[stepIndex].finish()
 
             // increment step index
             stepIndex++
@@ -92,9 +110,8 @@ export function startSequence({
                 return
             }
 
-            // log comments for next step
-            steps[stepIndex].printStepHeader()
-            steps[stepIndex].printComments()
+            // start next step
+            await steps[stepIndex].start()
         })
     })
 }
@@ -110,4 +127,8 @@ export function registerShortcutListener(callback) {
 
     // return remove function
     return () => keyListener.removeListener(listener)
+}
+
+export function waitPromise(ms) {
+    return new Promise(res => setTimeout(res, ms))
 }

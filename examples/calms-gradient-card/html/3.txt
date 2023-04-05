@@ -1,2 +1,5 @@
-#bold,white And then we'll add an empty div that'll act as the blurred overlay
+[# bold,white] And then we'll add an empty div that'll act as the blurred overlay
+
+---
 <div class="overlay"></div>
+---

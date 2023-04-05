@@ -1,4 +1,8 @@
-#bold,white We'll start with a wrapper div
+[# bold,white] We'll start with a wrapper div
+[end-cmd] :2
+
+---
 <div class="wrapper">
     
 </div>
+---

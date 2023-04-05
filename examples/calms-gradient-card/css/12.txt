@@ -1,3 +1,6 @@
-#bold,white add a blur,
+[# bold,white] add a blur,
+
+---
 filter: blur(20px);
     
+---

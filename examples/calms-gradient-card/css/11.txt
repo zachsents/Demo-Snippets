@@ -1,3 +1,6 @@
-#bold,white We'll make it a circle,
+[# bold,white] We'll make it a circle,
+
+---
 border-radius: 50%;
     
+---
